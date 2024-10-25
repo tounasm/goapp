@@ -6,9 +6,7 @@ ARG DEBUG
 COPY . /go/src/goapp
 WORKDIR /go/src/goapp
 
-RUN \
-    mkdir -p bin && \
-    make goapp
+RUN make
 
 FROM debian:12-slim
 
