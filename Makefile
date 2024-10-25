@@ -16,3 +16,7 @@ clean:
 .PHONY: test
 test:
 	go test -v ./... -cover
+
+.PHONY: bench
+bench:
+	go test -v ./... -bench=. -run=xxx -benchmem
