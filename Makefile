@@ -1,7 +1,7 @@
-.DEFAULT_GOAL := goapp
+.DEFAULT_GOAL := all
 
 .PHONY: all
-all: clean goapp
+all: clean goapp test
 
 .PHONY: goapp
 goapp:
@@ -12,3 +12,7 @@ goapp:
 clean:
 	go clean
 	rm -f bin/*
+
+.PHONY: test
+test:
+	go test -v ./... -cover
