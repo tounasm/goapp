@@ -1,4 +1,4 @@
-FROM golang:1.22.0 AS build
+FROM golang:1.23.2 AS build
 
 ARG VERSION
 ARG DEBUG
