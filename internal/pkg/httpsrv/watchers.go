@@ -17,6 +17,7 @@ func (s *Server) removeWatcher(w *watcher.Watcher) {
 	for i := range s.sessionStats {
 		if s.sessionStats[i].id == w.GetWatcherId() {
 			s.sessionStats[i].print()
+			s.sessionStats = append(s.sessionStats[:i], s.sessionStats[i+1:]...)
 		}
 	}
 	// Remove watcher.
