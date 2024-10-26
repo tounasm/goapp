@@ -17,6 +17,7 @@ func TestServer_New(t *testing.T) {
 	assert.Empty(t, s.watchers, "Expected watchers to be empty initially")
 	assert.NotNil(t, s.watchersLock, "Expected watchersLock to be initialized")
 	assert.Empty(t, s.sessionStats, "Expected sessionStats to be empty initially")
+	assert.NotNil(t, s.sessionLock, "Expected sessionLock to be initialized")
 }
 func TestServer_Start(t *testing.T) {
 
