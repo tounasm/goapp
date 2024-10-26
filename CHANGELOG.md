@@ -2,7 +2,7 @@
 
 Initial version.
 
-# [v1.0.0] - 28-10-2024
+# [v1.0.0] - 2024/10/26
 
 ## Fixes
 - **High Memory Usage**: Investigated and resolved excessive memory consumption observed after multiple WebSocket sessions.
