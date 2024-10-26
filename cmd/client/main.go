@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"net/http"
 	"net/url"
 	"os"
 	"os/signal"
@@ -46,10 +47,16 @@ func main() {
 		os.Exit(0)
 	}
 
-	u := url.URL{Scheme: "ws", Host: *addr, Path: *path}
+	url := url.URL{Scheme: "ws", Host: *addr, Path: *path}
+	req, err := http.NewRequest("GET", url.String(), nil)
+	if err != nil {
+		log.Fatalf("error creating request: %v", err)
+	}
+
+	req.Header.Set("Origin", "http://"+*addr)
 
 	for i := 0; i < *n; i++ {
-		c, _, err := websocket.DefaultDialer.Dial(u.String(), nil)
+		c, _, err := websocket.DefaultDialer.Dial(req.URL.String(), req.Header)
 		if err != nil {
 			log.Fatalf("Error connecting to server: %v", err)
 		}
